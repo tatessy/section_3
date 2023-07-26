@@ -13,7 +13,6 @@ class RandomWordsState extends State<RandomWords> {
   }
 }
 
-// StatefulなWidgetのクラスは、StatefulWidgetを継承
 class RandomWords extends StatefulWidget {
   const RandomWords({Key? key}) : super(key: key);
   @override

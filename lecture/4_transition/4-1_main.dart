@@ -10,9 +10,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const MainPage(),
-      routes: <String, WidgetBuilder> {
-        '/home': (BuildContext context) => const MainPage(),  // 最初のページ
-        '/subpage': (BuildContext context) => SubPage()  // 次のページ
+      routes: <String, WidgetBuilder>{
+        '/home': (BuildContext context) => const MainPage(),
+        '/subpage': (BuildContext context) => const SubPage()
       },
     );
   }
@@ -43,24 +43,23 @@ class MainPage extends StatelessWidget {
 }
 
 class SubPage extends StatelessWidget {
+  const SubPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Subページ"),
+        title: const Text("Subページ"),
       ),
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text("Sub"),
-              RaisedButton(
-                onPressed: () => Navigator.of(context).pop(),  // この画面を取り除く
-                child: Text("戻る"),
-              )
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text("Sub"),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(), // この画面を取り除く
+              child: const Text("戻る"),
+            )
+          ],
         ),
       ),
     );

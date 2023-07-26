@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
   @override
-  _MainPageState createState() => _MainPageState();
+  MainPageState createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   final _tab = <Tab>[
     // タブバーの表示
     const Tab(text: "Railway", icon: Icon(Icons.directions_railway)),
@@ -56,7 +56,7 @@ class TabPage extends StatelessWidget {
   final IconData? icon;
   final String? title;
 
-  const TabPage({Key? key, this.icon, this.title}) : super(key: key);
+  const TabPage({Key? key, this.icon,  this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,8 @@ class TabPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Icon(icon, size: 72.0, color: textStyle.color),
-          //titleに空の値が入る可能性がある場合はnullチェックを導入した方が良い
+          // final String? title;の場合、titleがnullの可能性もあるという設計なので、nullチェックをいれたほうが望ましい。
+          // titleが絶対入る場合は、final String title;と定義し、required this.titleにしてもよい。
           if (title != null) Text(title!, style: textStyle),
         ],
       ),

@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Live!人工知能"),
         ),
-        body: Center(
+        body: const Center(
           child: MyForm(),
         ),
       ),
@@ -22,37 +23,39 @@ class MyApp extends StatelessWidget {
 }
 
 class MyForm extends StatefulWidget {
+  const MyForm({Key? key}) : super(key: key);
   @override
-  _MyFormState createState() => _MyFormState();
+  MyFormState createState() => MyFormState();
 }
 
-class _MyFormState extends State<MyForm> {
+class MyFormState extends State<MyForm> {
   String _text = '';
 
   void _handleText(String e) {
-    setState(() {  // 状態を保持する変数を変更する処理は、setState内に記述する
+    setState(() {
+      // 状態を保持する変数を変更する処理は、setState内に記述する
       _text = e;
     });
   }
 
+  @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "$_text",
-              style: TextStyle(
-                color:Colors.blueAccent,
-                fontSize: 30.0,
-              ),
-            ),
-            TextField(  // テキストを表示
-              style: const TextStyle(color: Colors.red),
-              onChanged: _handleText,
-            ),
-          ],
-        )
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          _text,
+          style: const TextStyle(
+            color: Colors.blueAccent,
+            fontSize: 30.0,
+          ),
+        ),
+        TextField(
+          // テキストを表示
+          style: const TextStyle(color: Colors.red),
+          onChanged: _handleText,
+        ),
+      ],
     );
   }
 }

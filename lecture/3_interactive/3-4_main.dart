@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Live!人工知能"),
         ),
-        body: Center(
+        body: const Center(
           child: MyForm(),
         ),
       ),
@@ -22,11 +23,12 @@ class MyApp extends StatelessWidget {
 }
 
 class MyForm extends StatefulWidget {
+  const MyForm({Key? key}) : super(key: key);
   @override
-  _MyFormState createState() => _MyFormState();
+  MyFormState createState() => MyFormState();
 }
 
-class _MyFormState extends State<MyForm> {
+class MyFormState extends State<MyForm> {
   double _value = 0.0;
 
   void _changeSlider(double e) {
@@ -35,12 +37,14 @@ class _MyFormState extends State<MyForm> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Center(child:Text("値：$_value")),
-        Slider(  // スライダー
+        Center(child: Text("値：$_value")),
+        Slider(
+          // スライダー
           label: '$_value',
           min: 0,
           max: 10,

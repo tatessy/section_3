@@ -9,16 +9,16 @@ class RandomWordsState extends State<RandomWords> {
 
   // ListViewのWidgetを作るメソッド
   Widget _buildSuggestions() {
-    final _wordPairs = <WordPair>[];
+    final wordPairs = <WordPair>[];
     return ListView.builder(
       itemBuilder: (context, i) {
         if (i.isOdd) return const Divider();
 
         final index = i ~/ 2;  
-        if (index >= _wordPairs.length) {
-          _wordPairs.addAll(generateWordPairs().take(10));
+        if (index >= wordPairs.length) {
+          wordPairs.addAll(generateWordPairs().take(10));
         }
-        return _buildRow(_wordPairs[index]);
+        return _buildRow(wordPairs[index]);
       }
     );
   }

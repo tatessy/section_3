@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
   @override
-  _MainPageState createState() => _MainPageState();
+  MainPageState createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,6 @@ class _MainPageState extends State<MainPage> {
           children: const <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                // Boxによる装飾
                 color: Colors.blue,
               ),
               child: Text("ヘッダーです。"),

@@ -25,18 +25,20 @@ class MyApp extends StatelessWidget {
 class MyForm extends StatefulWidget {
   const MyForm({Key? key}) : super(key: key);
   @override
-  _MyFormState createState() => _MyFormState();
+  MyFormState createState() => MyFormState();
 }
 
-class _MyFormState extends State<MyForm> {
+class MyFormState extends State<MyForm> {
   int _count = 0;
 
   void _handlePressed() {
-    setState(() {  // 状態を保持する変数を変更する処理は、setState内に記述する
+    setState(() {
+      // 状態を保持する変数を変更する処理は、setState内に記述する
       _count++;
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -44,23 +46,18 @@ class _MyFormState extends State<MyForm> {
         Text(
           "$_count",
           style: const TextStyle(
-            color:Colors.blueAccent,
+            color: Colors.blueAccent,
             fontSize: 30.0,
           ),
         ),
         ElevatedButton(
           onPressed: _handlePressed,
-          style: ButtonStyle(
-            
+          style: ElevatedButton.styleFrom(
+            primary: Colors.blue, //ボタンの背景色
           ),
-        
-          // color: Colors.blue,
           child: const Text(
             "いいね!",
-            style: TextStyle(
-                color:Colors.white,
-                fontSize: 20.0
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
         )
       ],
